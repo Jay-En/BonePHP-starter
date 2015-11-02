@@ -1,0 +1,44 @@
+
+{% include("header.html")  %}
+      
+
+<div class="ch-container">
+    <div class="row">
+<div class="col-sm-3 center" >
+       {% if error %}
+            {% for err in error %}
+             <div class="alert alert-danger" >
+                 <strong>ERROR!</strong> {{err}}
+            </div>
+    {% endfor %}
+   
+    {% endif %}
+    {% if success %}
+    <div class="alert alert-success">
+      <strong>Success!</strong> {{success}}
+    </div>
+    {% endif %}
+
+<form class="form-signin" action="login" method="POST" target="_self">
+        <h2 class="form-signin-heading">Please sign in</h2>
+        <label for="username" class="sr-only">Username</label>
+        <input id="username" class="form-control" placeholder="username" required="" autofocus="" type="username" name="username">
+        <label for="inputPassword" class="sr-only">Password</label>
+        <input id="inputPassword" class="form-control" placeholder="Password" required="" type="password" name="password">
+        <input type="hidden" name="token" value={{token}}>
+        <div class="checkbox">
+          <label>
+            <input name="remember"type="checkbox"> Remember me
+          </label>
+        </div>
+        <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
+        <a href="signup" target="_self">Register</a>
+</form>
+</div>
+</div>
+</div>
+</form>
+
+
+</body>
+</html>
