@@ -101,6 +101,7 @@ class Bone
     //initialize here all needed config
     public function initializeConfiguration(){
             //initial Configured autoload
+        if(count($GLOBALS['config']['autoload']))
             self::autoload($GLOBALS['config']['autoload']);
 
 
