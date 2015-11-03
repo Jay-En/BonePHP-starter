@@ -1,7 +1,7 @@
 <?php
 
 		return 	[ 
-					"base_url" =>	"http://localhost/BonePHP-starter/",
+					"base_url" =>	"http://jnbruno.ml/bonephp/",
 		
 					"mysql"		=>	[
 										'driver'    => 'mysql',

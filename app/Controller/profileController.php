@@ -6,7 +6,7 @@ class profileController extends Controller{
 
 		$user = new User();
 		$params = array(
-			"title" => "Login",
+			"title" => "Profile",
 			'error' => Session::flash('error'),
 			'success' => Session::flash('success'),
 			'name' => $user->data()->name,

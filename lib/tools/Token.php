@@ -1,7 +1,7 @@
 <?php
 
 Class Token{
-	public function generate(){
+	public static function generate(){
 		return Session::put(config::get("session/token_name"),md5(uniqid()));
 
 	}

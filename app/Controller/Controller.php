@@ -2,7 +2,8 @@
 class Controller{
 
 		function htmlResponse($html, $params=""){
-			array_push($params, array("baseurl" => config::get('base_url')));
+			$params['baseurl'] = config::get('base_url');
+			
 			$path="app/Views";
 	        $loader = new Twig_Loader_Filesystem($path);
 	        $twig = new Twig_Environment($loader, array(

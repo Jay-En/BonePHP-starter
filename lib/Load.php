@@ -11,37 +11,25 @@
             if(substr($main, -1)){
                 $main .= "/";
             }
-            if(!is_dir($main)){
-                echo "Directory: ".$main." could not be found.";
-                exit;
-            }
+            // if(!is_dir($main)){
+            //     echo "Directory: ".$main." could not be found.";
+            //     exit;
+            // }
             self::$main = $main;
             /* Load all files from the directory */
             self::files($main);
             /* Scan the directory for more directories */
             self::scan($main);
         }
-        private function scan($directory){
+        private static function scan($directory){
             $scan = scandir($directory);
             /* Remove "." and ".." from the array */
             $scan = array_diff($scan, array(".", ".."));
             $directories = array();
-            foreach($scan as $data){
-                /* Check if the data is a directory */
-                if(is_dir($directory.$data."/")){
-                    /* If the data is a directory push it to the array */
-                    array_push($directories, $directory.$data."/");
-                }
+
             }
-            /* Go through all the directories found */
-            foreach($directories as $directory){
-                /* Load all files from the directory */
-                self::scan($directory);
-                /* Scan the directory for more directories */
-                self::files($directory);
-            }
-        }
-        private function files($directory){
+        
+        private static function files($directory){
             /* Get all the php files from the directory */
             $files = glob($directory . '*.php');
             /* Go through all the files found */

@@ -99,7 +99,7 @@ class Bone
     }
 
     //initialize here all needed config
-    public function initializeConfiguration(){
+    public static function initializeConfiguration(){
             //initial Configured autoload
         if(count($GLOBALS['config']['autoload']))
             self::autoload($GLOBALS['config']['autoload']);
@@ -107,7 +107,7 @@ class Bone
 
     }
 
-    public function config(array $config){
+    public static function config(array $config){
             
              $GLOBALS['config'] = $config;
             self::initializeConfiguration();
@@ -177,12 +177,12 @@ class Bone
 
 
     //autoload 
-    function autoload(array $path){
+    public static function autoload(array $path){
         foreach ($path as $key) {
             Load::directory($key);
         }
     }
-    function trimParameters($params){
+    public  static function trimParameters($params){
         foreach ($params as $key => $value) {
             if(!is_string($key)) unset($params[$key]);
         }
@@ -190,7 +190,7 @@ class Bone
 
     }
 
-    public function route(array $file){
+    public  static function route(array $file){
         foreach ($file as $route => $methods) {
             foreach ($methods as $method => $value) {
             call_user_func_array(['self', $value['method']],[$route,$value['function']]);
@@ -199,7 +199,7 @@ class Bone
     }
 
 //call function assigned
-function call($callback, $params){
+    public  static function call($callback, $params){
 
         $params=self::trimParameters($params);
         if(is_string($callback)){
@@ -223,7 +223,7 @@ function call($callback, $params){
 }
 
 //separate class to functions and arguments
-function grab($func,$args=NULL) {
+    public  static function grab($func,$args=NULL) {
         if (preg_match('/(.+)\h*(->|::)\h*(.+)/s',$func,$parts)) {
             // Convert string to executable PHP callback
             if (!class_exists($parts[1])){
@@ -243,7 +243,7 @@ function grab($func,$args=NULL) {
     }
 
 
-    function error($code,$body) {
+     public static function error($code,$body) {
         
         $header=self::status($code);
 

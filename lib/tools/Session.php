@@ -8,7 +8,7 @@
 			return $_SESSION[$name] = $value;
 		}
 
-		public function exist($name)
+		public static function exist($name)
 		{
 			return (isSet($_SESSION[$name])) ? true : false;
 		}
